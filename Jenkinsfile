@@ -65,25 +65,21 @@ stage ('Compile') {
      }
      stage ('artifactory') {
       steps{
-      rtServer (
-    id: 'Artifactory-1',
-    url: 'http://localhost:8081/artifactory',
-    username: 'admin',
-    password: 'password'
-    )
-       rtUpload (
-    serverId: 'Artifactory-1',
-    spec: '''{
-          "files": [
-            {
-              "pattern": "*.zip",
-              "target": "target/"
-            }
-         ]
-    }''',
-    buildName: 'holyFrog',
-    buildNumber: '42'
-)
+      def server = Artifactory.server 'Jfrog_artifactory'
+      server.bypassProxy = true
+      server.username = 'admin'
+      server.password = 'password'
+      def uploadSpec = """{
+      "files": [
+    {
+      "pattern": "bazinga/*froggy*.zip",
+      "target": "bazinga-repo/froggy-files/"
+    }
+   ]
+   }"""
+    server.upload(uploadSpec)
+    def buildInfo = server.upload uploadSpec
+    server.publishBuildInfo buildInfo   
       }
      }
 
