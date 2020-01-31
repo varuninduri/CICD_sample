@@ -59,7 +59,8 @@ stage ('Compile') {
         }*/ 
      stage ('Run Jar') {
       steps {
-      sh "sh startjar.sh"
+      sh "sh stopjar.sh"
+      sh "sh startjar.sh" 
      }
      }
     }
