@@ -64,7 +64,6 @@ stage ('Compile') {
      }
      }
      stage ('artifactory') {
-      steps{
       def server = Artifactory.server 'Jfrog_artifactory'
       server.bypassProxy = true
       server.username = 'admin'
@@ -81,7 +80,7 @@ stage ('Compile') {
     def buildInfo = server.upload uploadSpec
     server.publishBuildInfo buildInfo   
       }
-     }
+     
 
     }
 }
