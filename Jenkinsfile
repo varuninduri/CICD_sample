@@ -57,11 +57,11 @@ stage ('Compile') {
                 mavenTasks( step: "artifactory" )
             }
         }*/ 
-     stage ('run the application') {
-            steps {
-                sh 'java -jar target/demo-0.0.1-SNAPSHOT.jar &'
-            }
-        }
-    
+     stage ('Run Jar') {
+      steps {
+      sh "java -jar scalr-api.jar testing654 n1-standard-8 > scalr.out"
+def out = readFile 'scalr.out'
+     }
+     }
     }
 }
