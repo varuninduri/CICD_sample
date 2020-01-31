@@ -47,6 +47,22 @@ stage ('Compile') {
              mavenTasks( coveragereport: true )
             }
         }
+     stage ('package') {
+            steps {
+                mavenTasks( step: "package" )
+            }
+        }
+     /*stage ('artifactory') {
+            steps {
+                mavenTasks( step: "artifactory" )
+            }
+        }*/ 
+     stage ('Run Jar') {
+      steps {
+      sh "sh stopjar.sh"
+      sh "sh startjar.sh" 
+     }
+     }
 
     }
 }
