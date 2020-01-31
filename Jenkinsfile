@@ -52,11 +52,11 @@ stage ('Compile') {
                 mavenTasks( step: "package" )
             }
         }
-     stage ('artifactory') {
+     /*stage ('artifactory') {
             steps {
                 mavenTasks( step: "artifactory" )
             }
-        } 
+        }*/ 
      
     
     }
