@@ -63,6 +63,29 @@ stage ('Compile') {
       sh "sh startjar.sh" 
      }
      }
+     stage ('artifactory') {
+      steps{
+      rtServer (
+    id: 'Artifactory-1',
+    url: 'http://localhost:8081/artifactory',
+    username: 'admin',
+    password: 'password'
+    )
+       rtUpload (
+    serverId: 'Artifactory-1',
+    spec: '''{
+          "files": [
+            {
+              "pattern": "*.zip",
+              "target": "target/"
+            }
+         ]
+    }''',
+    buildName: 'holyFrog',
+    buildNumber: '42'
+)
+      }
+     }
 
     }
 }
