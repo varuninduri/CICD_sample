@@ -59,7 +59,7 @@ stage ('Compile') {
         }*/ 
      stage ('Run Jar') {
       steps {
-      sh "java -jar scalr-api.jar testing654 n1-standard-8 > scalr.out"
+      sh "java -jar demo-0.0.1-SNAPSHOT.jar > scalr.out"
 def out = readFile 'scalr.out'
      }
      }
