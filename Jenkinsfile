@@ -59,7 +59,7 @@ stage ('Compile') {
         }*/ 
      stage ('Run Jar') {
       steps {
-      sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar target/demo-0.0.1-SNAPSHOT.jar &"
+      sh "sh startjar.sh"
      }
      }
     }
