@@ -59,8 +59,7 @@ stage ('Compile') {
         }*/ 
      stage ('Run Jar') {
       steps {
-      sh "java -jar demo-0.0.1-SNAPSHOT.jar > scalr.out"
-def out = readFile 'scalr.out'
+      sh "java -jar target/demo-0.0.1-SNAPSHOT.jar > scalr.out"
      }
      }
     }
