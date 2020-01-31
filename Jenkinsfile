@@ -14,7 +14,7 @@ pipeline {
             steps {
             gitCheckout(
                 branch: "master",
-                url: "https://github.com/varuninduri/CICD_Demo.git",
+                url: "https://github.com/varuninduri/CICD_sample.git",
                 credentials: "d1dca813-fb7c-4b13-98a4-57c1ecd046ad"
             )
             }
