@@ -73,8 +73,8 @@ stage ('Compile') {
       def uploadSpec = """{
       "files": [
     {
-      "pattern": "bazinga/*froggy*.zip",
-      "target": "bazinga-repo/froggy-files/"
+      "pattern": "*.zip",
+      "target": "target/"
     }
    ]
    }"""
