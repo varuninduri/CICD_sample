@@ -47,51 +47,6 @@ stage ('Compile') {
              mavenTasks( coveragereport: true )
             }
         }
-    stage ('package') {
-            steps {
-                mavenTasks( step: "package" )
-            }
-        }
-     /*stage ('artifactory') {
-            steps {
-                mavenTasks( step: "artifactory" )
-            }
-        }*/ 
-     stage ('Run Jar') {
-      steps {
-      sh "sh stopjar.sh"
-      sh "sh startjar.sh" 
-     }
-     }
-     stage ('artifactory') {
-      steps{
-      rtServer (
-    id: 'Artifactory-1',
-    url: 'http://localhost:8081/artifactory',
-    // If you're using username and password:
-    username: 'admin',
-    password: 'password'
-    timeout = 300
-)
-       rtUpload (
-    serverId: 'Artifactory-1',
-    spec: '''{
-          "files": [
-            {
-              "pattern": "*.zip",
-              "target": "target/"
-            }
-         ]
-    }''',
- 
-    // Optional - Associate the uploaded files with the following custom build name and build number,
-    // as build artifacts.
-    // If not set, the files will be associated with the default build name and build number (i.e the
-    // the Jenkins job name and number).
-    buildName: 'holyFrog',
-    buildNumber: '42'
-)
-      }
-     }
+
     }
 }
