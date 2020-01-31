@@ -1,4 +1,4 @@
 #!/bin/bash
-"starting jar"
+echo "starting jar"
 JENKINS_NODE_COOKIE=dontKillMe nohup java -Duniquename=runningjar -jar target/*.jar & > run.log
-"jar started"
+echo "jar started"
