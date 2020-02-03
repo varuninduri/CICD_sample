@@ -21,7 +21,6 @@ pipeline {
         }
     stage ('Clean') {
             steps {
-                mavenTasks( pomloc : "SchedulerDemo/pom.xml" )
                 mavenTasks( step: "clean" )                
             }
         }
@@ -33,6 +32,7 @@ stage ('Compile') {
 stage ('sonar') {
             steps {     
 sonarTasks( sonarserver: "sonar")
+sonarTasks( qualitycheck:flase )             
             }
 }
     stage ('test') {
