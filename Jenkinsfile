@@ -32,7 +32,7 @@ stage ('Compile') {
 stage ('sonar') {
             steps {     
 sonarTasks( sonarserver: "sonar")
-sonarTasks( qualitygate: true )             
+sonarTasks( qualitygate: "false" )             
             }
 }
     stage ('test') {
