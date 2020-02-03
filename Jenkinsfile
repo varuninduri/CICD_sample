@@ -30,7 +30,7 @@ stage ('Compile') {
                 mavenTasks( step: "compile" )                
             }
         }
-    sonarTasks( sonarserver: "sonar")
+sonarTasks( sonarserver: "sonar")
     stage ('test') {
             steps {
               mavenTasks( step: "test" )
