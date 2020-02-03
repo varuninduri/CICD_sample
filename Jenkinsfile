@@ -31,8 +31,7 @@ stage ('Compile') {
         }
 stage ('sonar') {
             steps {     
-sonarTasks( sonarTool: "sonar")
-sonarTasks( qualityGate: false )             
+sonarTasks( sonarTool: "sonar", qualityGate: false )             
             }
 }
     stage ('test') {
