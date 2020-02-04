@@ -37,13 +37,13 @@ stage ('sonar') {
     stage ('test') {
             steps {
               mavenTasks( step: "test" )
-              mavenTasks( testreport: true )
+              mavenTasks( testreport: false )
             }
         }
     stage ('coverage') {
             steps {
              mavenTasks( step: "coverage" )
-             mavenTasks( coveragereport: true )
+             mavenTasks( coveragereport: false )
             }
         }
      stage ('package') {
