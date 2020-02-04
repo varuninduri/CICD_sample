@@ -32,7 +32,8 @@ stage ('Compile') {
 stage ('sonar') {
             steps {     
    //mavenTasks( step: "sonar" ) 
-             sonarTasks( sonarTool: "sonar" )
+             //sonarTasks( sonarTool: "sonar" )
+             sonarTasks( sonarTool: "sonar", qualityGate: false )
             }
 }
     stage ('test') {
