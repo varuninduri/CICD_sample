@@ -33,19 +33,17 @@ stage ('sonar') {
             steps {     
    //mavenTasks( step: "sonar" ) 
              //sonarTasks( sonarTool: "sonar" )
-             sonarTasks( sonarTool: "sonar", qualityGate: true )
+             sonarTasks( sonarTool: "sonar", qualityGate: false )
             }
 }
     stage ('test') {
             steps {
-              mavenTasks( step: "test" )
-              mavenTasks( testreport: false )
+              mavenTasks( step: "test", testreport: false )
             }
         }
     stage ('coverage') {
             steps {
-             mavenTasks( step: "coverage" )
-             mavenTasks( coveragereport: false )
+             mavenTasks( step: "coverage", coveragereport: false )
             }
         }
      stage ('package') {
