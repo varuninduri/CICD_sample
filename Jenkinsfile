@@ -31,7 +31,7 @@ stage ('Compile') {
         }
 stage ('sonar') {
             steps {     
-sonarTasks()             
+   mavenTasks( step: "sonar" )      
             }
 }
     stage ('test') {
