@@ -19,17 +19,13 @@ pipeline {
       loadProperties()
       }
      }
-     stage('echo properties'){
-      steps{
-      echo properties.test
-      }
-     }
+     
         stage('Git Checkout') {
             steps {
             gitCheckout(
-                branch: "master",
-                url: "https://github.com/varuninduri/CICD_sample.git",
-                credentials: "d1dca813-fb7c-4b13-98a4-57c1ecd046ad"
+                branch: properties.branch,
+                url: properties.giturl,
+                credentials: properties.gitcredsid
             )
             }
         }
