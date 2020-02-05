@@ -86,3 +86,4 @@ stage ('sonar') {
       artifactory()
     }
 }
+}
