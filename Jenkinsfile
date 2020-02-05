@@ -3,6 +3,15 @@ properties = null
 def loadProperties() {
  properties = readProperties file: 'pipeline.properties'
 }
+node{
+ stages{
+  stage('load properties'){
+      steps{
+      loadProperties()
+      }
+     }
+ }
+}
  
 pipeline {
     agent any
@@ -14,12 +23,7 @@ pipeline {
     
     
      stages {
-     stage('load properties'){
-      steps{
-      loadProperties()
-      }
-     }
-   
+    
         stage('Git Checkout') {
             steps {
             gitCheckout(
