@@ -63,8 +63,8 @@ stage ('sonar') {
      }
      }
      stage ('artifactory') {
-      /*steps{
-       script{
+      steps{
+       /*script{
       def server = Artifactory.server 'Jfrog_artifactory'
       server.bypassProxy = true
       server.username = 'admin'
@@ -85,5 +85,6 @@ stage ('sonar') {
      }*/
       artifactory()
     }
+     }
 }
 }
