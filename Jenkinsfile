@@ -6,6 +6,12 @@ def loadProperties() {
  
 pipeline {
     agent any
+  tools {
+        loadProperties()
+        maven properties.maventool 
+        jdk properties.jdktool 
+    }
+    
     
      stages {
      stage('load properties'){
@@ -13,13 +19,7 @@ pipeline {
       loadProperties()
       }
      }
-    tools { 
-        maven properties.maventool 
-        jdk properties.jdktool 
-    }
-    
    
-     
         stage('Git Checkout') {
             steps {
             gitCheckout(
