@@ -1,4 +1,8 @@
 @Library('Jenkins_Shared_Library@master') _
+properties = null
+def loadProperties() {
+ properties = readProperties file: 'pipeline.properties'
+}
  
 pipeline {
     agent any
@@ -10,6 +14,11 @@ pipeline {
     }
     
     stages {
+     stage('load properties'){
+      steps{
+      loadProperties()
+      }
+     }
         stage('Git Checkout') {
             steps {
             gitCheckout(
