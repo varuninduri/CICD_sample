@@ -6,8 +6,8 @@ def loadProperties() {
  
 pipeline {
     agent any
+ 
   tools {
-        properties = readProperties file: 'pipeline.properties'
         maven properties.maventool 
         jdk properties.jdktool 
     }
