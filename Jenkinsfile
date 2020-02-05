@@ -14,6 +14,11 @@ pipeline {
     
     
      stages {
+      stage('Load Properties'){
+       steps{
+       loadProperties()
+       }
+      }
     
         stage('Git Checkout') {
             steps {
