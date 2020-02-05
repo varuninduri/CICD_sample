@@ -19,6 +19,11 @@ pipeline {
       loadProperties()
       }
      }
+     stage('echo properties'){
+      steps{
+      echo properties.test
+      }
+     }
         stage('Git Checkout') {
             steps {
             gitCheckout(
