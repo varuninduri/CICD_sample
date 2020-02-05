@@ -7,18 +7,18 @@ def loadProperties() {
 pipeline {
     agent any
     
-    
-    tools { 
-        maven 'maven-3.5.4' 
-        jdk 'jdk' 
-    }
-    
-    stages {
+     stages {
      stage('load properties'){
       steps{
       loadProperties()
       }
      }
+    tools { 
+        maven properties.maventool 
+        jdk properties.jdktool 
+    }
+    
+   
      
         stage('Git Checkout') {
             steps {
