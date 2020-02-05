@@ -83,7 +83,7 @@ stage ('sonar') {
       }
       }
      }*/
-      artifactory( artitactoryId: "Jfrog_artifactory", mavenId: "maven-3.5.4" )
+      artifactory( artifactoryId: "Jfrog_artifactory", mavenId: "maven-3.5.4" )
     }
      }
 }
