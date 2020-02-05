@@ -3,22 +3,13 @@ properties = null
 def loadProperties() {
  properties = readProperties file: 'pipeline.properties'
 }
-node{
- stages{
-  stage('load properties'){
-      steps{
-      loadProperties()
-      }
-     }
- }
-}
- 
+
 pipeline {
     agent any
  
   tools {
-        maven properties.maventool 
-        jdk properties.jdktool 
+        maven 'maven-3.5.4'
+        jdk 'jdk' 
     }
     
     
