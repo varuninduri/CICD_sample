@@ -40,8 +40,9 @@ stage ('Compile') {
             }
         }
 stage ('sonar') {
-            steps {     
-             sonarTasks( sonarTool: "sonar", qualityGate: false )
+            steps {
+             println (properties.qualitygate).toBoolean() 
+             sonarTasks( sonarTool: "sonar", qualityGate: (properties.qualitygate).toBoolean() )
             }
 }
     stage ('test') {
