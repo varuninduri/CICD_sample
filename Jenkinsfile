@@ -43,7 +43,7 @@ stage ('sonar') {
             steps {     
    //mavenTasks( step: "sonar" ) 
              //sonarTasks( sonarTool: "sonar" )
-             sonarTasks( sonarTool: "sonar", qualityGate: true )
+             sonarTasks( sonarTool: "sonar", qualityGate: Boolean.getBoolean(properties.qualitygate) )
             }
 }
     stage ('test') {
