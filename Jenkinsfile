@@ -41,7 +41,6 @@ stage ('Compile') {
         }
 stage ('sonar') {
             steps {
-             println (properties.qualitygate).toBoolean() 
              sonarTasks( sonarTool: "sonar", qualityGate: (properties.qualitygate).toBoolean() )
             }
 }
