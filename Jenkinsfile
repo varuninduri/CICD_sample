@@ -43,8 +43,7 @@ stage ('sonar') {
             steps {     
    //mavenTasks( step: "sonar" ) 
              //sonarTasks( sonarTool: "sonar" )
-             Boolean qualitygate = Boolean.parseBoolean(yourProperties.getProperty("qualitygate"))
-             sonarTasks( sonarTool: "sonar", qualityGate: qualitygate )
+             sonarTasks( sonarTool: "sonar", qualityGate: Boolean.parseBoolean(properties.getProperty("qualitygate") )
             }
 }
     stage ('test') {
