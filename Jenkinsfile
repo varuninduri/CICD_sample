@@ -46,12 +46,12 @@ stage ('sonar') {
 }
     stage ('test') {
             steps {
-              mavenTasks( step: "test", testreport: false )
+              mavenTasks( step: "test", testreport: (properties.junittestreport).toBoolean() )
             }
         }
     stage ('coverage') {
             steps {
-             mavenTasks( step: "coverage", coveragereport: false )
+             mavenTasks( step: "coverage", coveragereport: (properties.testcoveragereport).toBoolean() )
             }
         }
      stage ('package') {
