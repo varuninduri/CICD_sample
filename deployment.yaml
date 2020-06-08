@@ -1,1 +1,58 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cicdsample
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: cicdsample
+  type: NodePort
 
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cicdsample
+spec:
+  backend:
+    serviceName: cicdsample
+    servicePort: 80
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cicdsample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cicdsample
+    spec:
+      containers:
+      - name: cicdsample
+        image: demo
+        ports:
+          - containerPort: 8080
+        livenessProbe:      # Used by deployment controller
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:     # Used by Ingress/GCLB
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        resources:
+          limits:
+            memory: 1024Mi
+          requests:
+            memory: 768Mi
