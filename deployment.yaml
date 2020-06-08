@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: cicdsample
-        image: demo
+        image: gcr.io/celestial-gecko-266008/demo
         ports:
           - containerPort: 8080
         livenessProbe:      # Used by deployment controller
